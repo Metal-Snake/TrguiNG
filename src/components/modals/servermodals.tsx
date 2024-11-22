@@ -104,6 +104,18 @@ const ServerModals = React.forwardRef<ModalCallbacks, ServerModalsProps>(functio
     }, [addQueue]);
 
     useEffect(() => {
+        if(TAURI) {
+            const listenResult = appWindow.listen<string[]>("addTorrent", (event) => {
+                openAddTorrentModal();
+            });
+        
+            return () => {
+                void listenResult.then((unlisten) => { unlisten(); });
+            };
+        }
+      },);
+
+    useEffect(() => {
         if (TAURI) {
             const listenResult = appWindow.listen<string[]>("tauri://file-drop", (event) => {
                 const files = event.payload.filter((path) => path.toLowerCase().endsWith(".torrent"));

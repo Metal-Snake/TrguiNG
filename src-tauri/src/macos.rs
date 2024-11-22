@@ -179,10 +179,22 @@ pub fn make_menu(app_name: &str) -> Menu {
     menu = menu.add_submenu(Submenu::new(
         app_name,
         Menu::new()
-            .add_native_item(MenuItem::CloseWindow)
-            .add_item(CustomMenuItem::new("quit", "Quit").accelerator("Cmd+q")),
+            //.add_item(about_menu_item),
+            .add_native_item(MenuItem::Separator)
+            .add_native_item(MenuItem::Services)
+            .add_native_item(MenuItem::Separator)
+            .add_native_item(MenuItem::Hide)
+            .add_native_item(MenuItem::HideOthers)
+            .add_native_item(MenuItem::ShowAll)
+            .add_native_item(MenuItem::Separator)
+            .add_native_item(MenuItem::Quit),
     ));
-
+    
+    let mut file_menu = Menu::new();
+    file_menu = file_menu.add_item(CustomMenuItem::new("addTorrent", "Add Torrent").accelerator("Cmd+o"));
+    file_menu = file_menu.add_native_item(MenuItem::CloseWindow);
+    menu = menu.add_submenu(Submenu::new("File", file_menu));
+    
     let mut edit_menu = Menu::new();
     edit_menu = edit_menu.add_native_item(MenuItem::Cut);
     edit_menu = edit_menu.add_native_item(MenuItem::Copy);

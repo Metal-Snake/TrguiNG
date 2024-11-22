@@ -68,6 +68,7 @@ export function useHotkeysContext() {
 
 export function useAppHotkeys() {
     const hk = useHotkeysContext();
+    const isMacOS = navigator.platform.startsWith("Mac");
 
     useHotkeys([
         ["F3", () => { hk.run("start"); }],
@@ -75,7 +76,7 @@ export function useAppHotkeys() {
         ["delete", () => { hk.run("remove"); }],
         ["F6", () => { hk.run("move"); }],
         ["F7", () => { hk.run("setLabels"); }],
-        ["mod + H", () => { hk.run("setPriorityHigh"); }],
+        [isMacOS ? "ctrl + H" : "mod + H", () => { hk.run("setPriorityHigh"); }],
         ["mod + N", () => { hk.run("setPriorityNormal"); }],
         ["mod + L", () => { hk.run("setPriorityLow"); }],
         ["F8", () => { hk.run("toggleAltSpeedMode"); }],

@@ -211,7 +211,7 @@ function Toolbar(props: ToolbarProps) {
 
     useHotkeys([
         ["mod + P", props.toggleMainSplit],
-        ["mod + O", props.toggleFiltersPanel],
+        ["mod + 1", props.toggleFiltersPanel],
         ["mod + I", props.toggleDetailsPanel],
         ["mod + [", props.toggleTabStrip],
     ]);
@@ -355,7 +355,7 @@ function Toolbar(props: ToolbarProps) {
                         Change layout
                     </Menu.Item>
                     <Menu.Item
-                        onClick={props.toggleFiltersPanel} rightSection={<Kbd>{`${modKeyString()} O`}</Kbd>}>
+                        onClick={props.toggleFiltersPanel} rightSection={<Kbd>{`${modKeyString()} 1`}</Kbd>}>
                         Toggle filters
                     </Menu.Item>
                     <Menu.Item
