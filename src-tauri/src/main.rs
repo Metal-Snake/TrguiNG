@@ -188,6 +188,12 @@ fn main() {
         .menu(macos::make_menu(
             context.config().package.product_name.as_ref().unwrap(),
         ))
+        .on_menu_event(|event| match event.menu_item_id() {
+            "quit" => {
+                tray::exit(event.window().app_handle());
+            }
+            _ => {}
+        })
         .on_menu_event(|event| {
             match event.menu_item_id() {
                 "addTorrent" => {

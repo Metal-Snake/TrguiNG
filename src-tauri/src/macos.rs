@@ -187,7 +187,7 @@ pub fn make_menu(app_name: &str) -> Menu {
             .add_native_item(MenuItem::HideOthers)
             .add_native_item(MenuItem::ShowAll)
             .add_native_item(MenuItem::Separator)
-            .add_native_item(MenuItem::Quit),
+            .add_item(CustomMenuItem::new("quit", "Quit").accelerator("Cmd+q")),
     ));
     
     let mut file_menu = Menu::new();
